@@ -1,0 +1,637 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+.wallpaper {
+    display: flex;
+    min-height: 720px;
+    height: 100%;
+    width: 100%;
+    background: white;
+}
+
+.wallpaper__item {
+    width: 50%;
+}
+
+.wallpaper__first {
+    background: #CCCCCC;
+}
+
+.nav-link-font {
+    text-transform: uppercase;
+    color: #141414;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.nav {
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
+.nav-link:hover {
+    color: chartreuse;
+}
+
+.temp {
+    margin-top: 225px;
+    margin-left: 105px;
+}
+
+.logoTT {
+    padding-bottom: 20px;
+
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 65px;
+    text-transform: uppercase;
+
+    color: #141414;
+}
+
+.span-LogoTT {
+    color: chartreuse;
+}
+
+.logoText {
+    margin-right: 100px;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+
+    color: #141414;
+}
+
+.logout {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+}
+
+.logout:hover {
+    color: chartreuse;
+    cursor: pointer;
+}
+
+.logoutForm {
+    padding: 0;
+    margin-right: 0;
+}
+
+.bgPage {
+    background: #F2F2F2;
+}
+
+.registrationPage {
+    position: relative;
+    width: 700px;
+    height: 520px;
+    display: block;
+    margin-top: 62px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: 3px;
+}
+
+.registrationTitle {
+    position: absolute;
+    top: 81px;
+    left: 261px;
+    right: 261px;
+
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+
+    text-transform: uppercase;
+
+    color: #141414;
+}
+
+.registrationForm {
+    position: absolute;
+    top: 144px;
+    left: 200px;
+    right: 200px;
+}
+
+.formRegistrText {
+    text-align: center;
+    margin: 20px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 19px;
+    color: #808080;
+}
+
+.formRegistrText a {
+    text-decoration: underline;
+    color: chartreuse;
+}
+
+.loginPage, .profilePage {
+    position: relative;
+    width: 700px;
+    height: 450px;
+    display: block;
+    margin-top: 62px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: 3px;
+}
+
+.loginTitle, .profileTitle {
+    position: absolute;
+    top: 121px;
+    left: 50%;
+    transform: translate(-50%);
+
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+
+    text-transform: uppercase;
+
+    color: #141414;
+}
+
+.loginForm, .profileForm {
+    position: absolute;
+    top: 174px;
+    left: 200px;
+    right: 200px;
+}
+
+.formLoginText {
+    text-align: center;
+    margin: 20px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #808080;
+}
+
+.formLoginText a {
+    text-decoration: underline;
+    color: chartreuse;
+}
+
+.formMessage {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #F01313;
+}
+
+.chats {
+    margin: 32px 55px 80px;
+}
+
+.chats-head {
+    display: flex;
+}
+
+.chats-title {
+    width: 25%;
+    height: 51px;
+    background: white;
+}
+
+.dialogue-title {
+    position: relative;
+    width: 75%;
+    height: 51px;
+    margin-left: 10px;
+    background: white;
+}
+.chat-delete {
+    position: absolute;
+    right: 20px;
+    top: 7px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    border: none;
+    background:none;
+}
+.chat-delete:hover {
+    cursor: pointer;
+}
+
+.chats-title-text {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    padding: 0;
+    color: #141414;
+    margin-left: 20px;
+    margin-top: 13px;
+}
+
+.dialogue-title-text {
+    color: #141414;
+}
+
+.chats-content {
+    display: flex;
+}
+
+.chats-content-title {
+    width: 25%;
+    height: 527px;
+    background: white;
+    margin-top: 2px;
+}
+
+.chats-content-dialogue {
+    position: relative;
+    width: 75%;
+    margin-top: 2px;
+    height: 527px;
+    margin-left: 10px;
+    background: white;
+}
+
+.chat-messages {
+    height: 461px;
+    overflow-y: scroll;
+}
+
+.chat-message-green {
+    background-color: #B7FAC1;
+    padding: 8px 10px;
+    border-radius: 3px;
+    margin: 5px 20% 0px 2%;
+    outline: none;
+    border: none;
+    transition: background-color .2s linear;
+}
+
+.chat-message-red {
+    background-color: #FAB7B7;
+    padding: 8px 10px;
+    border-radius: 3px;
+    margin: 5px 20% 0px 2%;
+    outline: none;
+    border: none;
+    transition: background-color .2s linear;
+}
+
+.chat-message-green:hover {
+    background: #84fa90;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-message-red:hover {
+    background: #fa8686;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-form-message {
+    position: absolute;
+    bottom: 0px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-left: 2%;
+    width: 96%;
+}
+
+.chat-input {
+    outline: none;
+    display: inline-block;
+    border: none;
+    padding: 10px;
+    color: #808080;
+    background: #F2F2F2;
+    border-radius: 3px;
+    width: 95%;
+}
+
+.topic {
+    position: relative;
+    display: inline-block;
+    color: #000000;
+    background: #e5e5e5;
+    font-weight: normal;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 19px;
+    width: 100px;
+    height: 25px;
+    padding: 2px 10px;
+    margin-left: 15px;
+    margin-bottom: 13px;
+    margin-top: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.quest-inform {
+    display: none;
+}
+
+.quest-icon:hover .quest-inform {
+    outline: none;
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 12px 15px;
+    color: #808080;
+    z-index: 100;
+    display: block;
+    width: 293px;
+    font-size: 11px;
+    line-height: 1.2;
+    height: 127px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+}
+
+.topic-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 8px;
+    padding: 0;
+    border: none;
+    margin-right: 10px;
+    background: none;
+}
+
+.topic-delete:hover {
+    outline: none;
+    cursor: pointer;
+}
+
+.topic-red {
+    background: #FAB7B7;
+}
+
+.topic-green {
+    background: #B7FAC1;
+}
+
+.span-red {
+    color: #F01313;
+}
+
+.span-green {
+    color: #29F245;
+}
+
+.chats-content-item {
+    position: relative;
+    width: 100%;
+    height: 66px;
+    transition: background-color .2s linear;
+}
+
+.chats-content-item:hover {
+    background-color: #B7FAC1;
+    cursor: pointer;
+}
+
+.chats-content-avatar {
+    position: absolute;
+    width: 50px;
+    left: 15px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: uppercase;
+    padding-top: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    top: 8px;
+    background-color: #e5e5e5;
+    height: 50px;
+    font-size: 0px;
+    border-radius: 50%;
+}
+
+.chats-content-avatar:first-letter {
+    font-size: 20px;
+}
+
+.chats-content-title-text {
+    position: absolute;
+    left: 78px;
+    top: 10px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.chats-content-title-time {
+    position: absolute;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    color: #29F245;
+    right: 25px;
+    top: 10px;
+}
+
+.my-btn {
+    padding: 0;
+    border: none;
+    text-align: left;
+    background: none;
+    margin: 0;
+}
+
+.btn-select-chat {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    margin: 0;
+}
+
+.btn-select-chat:hover {
+    cursor: pointer;
+    outline: none;
+}
+
+.my-btn:hover {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.my-topics {
+    position: relative;
+    width: 80%;
+    margin-top: 32px;
+    margin-left: 10%;;
+    margin-right: 10%;
+}
+
+.all-topics {
+    position: relative;
+    width: 80%;
+    margin-top: 182px;
+    margin-left: 10%;;
+    margin-right: 10%;
+}
+
+.topics-title {
+    position: absolute;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.add-icon {
+    position: absolute;
+    left: 100px;
+    top: 0px;
+}
+
+.topics-content {
+    position: relative;
+    top: 48px;
+    flex-direction: row;
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.adde {
+    position: absolute;
+    top: 150px;
+}
+
+.checkbox-group {
+    margin-top: 10px;
+}
+
+.quest-icon {
+    position: absolute;
+    margin-left: 250px;
+}
+
+.send-icon {
+    margin-right: 2%;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+.non-report {
+    position: absolute;
+    left: 50%;
+}
+
+/* Buttons */
+.btn-send-message {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-send-message:hover {
+    cursor: pointer;
+}
+
+.btn-registr {
+    text-align: center;
+    width: 300px;
+    height: 44px;
+    background: #B7FAC1;
+    border-radius: 3px;
+    border: none;
+}
+
+.btn-add {
+    text-align: center;
+    width: 159px;
+    height: 44px;
+    background: #B7FAC1;
+    border-radius: 3px;
+    border: none;
+}
+
+.btn-block {
+    justify-content: left;
+    text-align: center;
+    width: 100%;
+    height: 44px;
+    background: #FAB7B7;
+    border-radius: 3px;
+    border: none;
+    transition: background-color .2s linear;
+}
+.btn-block:hover {
+    cursor: pointer;
+    outline: none;
+    background: #f88787;
+}
+
+.btn-login, .btn-profile {
+    text-align: center;
+    width: 300px;
+    height: 44px;
+    background: #B7FAC1;
+    border-radius: 3px;
+    border: none;
+}
+
+.btn- {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+}
+
+.btn-topic {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.btn-topic:hover {
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-login:hover, .btn-registr:hover, .btn-profile:hover, .btn-add:hover {
+    outline: none;
+    cursor: pointer;
+    background: #9dfdaa;
+}
+/* /Buttons */
