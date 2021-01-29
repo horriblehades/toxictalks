@@ -26,12 +26,16 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws LockedException {
         return userRepo.findByUsername(username);
 
+    }
+
+    public User findUserById(User user) { return userRepo.findById(user.getId()).get(); }
+
+    public boolean userIsBlocked(User user) {
+        return !userRepo.findById(user.getId()).get().isActive();
     }
 
     public boolean addUser(User user) {
@@ -111,4 +115,5 @@ public class UserService implements UserDetailsService {
         }
 
     }
+
 }

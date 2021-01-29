@@ -1,4 +1,4 @@
-package com.horriblehades.toxictalks.controler;
+package com.horriblehades.toxictalks.controller;
 
 import com.horriblehades.toxictalks.domain.User;
 import com.horriblehades.toxictalks.service.UserService;

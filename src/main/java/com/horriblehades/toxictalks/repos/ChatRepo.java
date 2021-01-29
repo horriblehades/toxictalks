@@ -36,7 +36,7 @@ public interface ChatRepo extends CrudRepository<Chat, Long> {
             "WHERE creator_id = ?1 " +
             "AND " +
             "participant_id IS NULL", nativeQuery = true)
-    Set<Chat> findMyTopics(Long userId);
+    Set<Chat> findUserTopics(Long userId);
 
     @Query(value = "SELECT * FROM chat " +
             "WHERE (creator_id = ?1 " +

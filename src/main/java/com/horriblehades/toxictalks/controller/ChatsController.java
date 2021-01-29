@@ -1,14 +1,12 @@
-package com.horriblehades.toxictalks.controler;
+package com.horriblehades.toxictalks.controller;
 
 import com.horriblehades.toxictalks.domain.Chat;
 import com.horriblehades.toxictalks.domain.ChatMessage;
 import com.horriblehades.toxictalks.domain.User;
-import com.horriblehades.toxictalks.repos.ChatMessageRepo;
-import com.horriblehades.toxictalks.repos.ChatRepo;
-import com.horriblehades.toxictalks.repos.UserRepo;
 import com.horriblehades.toxictalks.service.ChatService;
 import com.horriblehades.toxictalks.service.MessageService;
 import com.horriblehades.toxictalks.service.ReportService;
+import com.horriblehades.toxictalks.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -31,19 +29,13 @@ public class ChatsController {
     private ReportService reportService;
 
     @Autowired
-    private ChatRepo chatRepo;
-
-    @Autowired
     private MessageService messageService;
-
-    @Autowired
-    private UserRepo userRepo;
 
     @Autowired
     private ChatService chatService;
 
     @Autowired
-    private ChatMessageRepo chatMessageRepo;
+    private UserService userService;
 
 
     @GetMapping("/chats")
@@ -51,12 +43,14 @@ public class ChatsController {
             Model model,
             @AuthenticationPrincipal User user) {
 
-        if (chatService.userIsBlocked(user)) {
+        if (userService.userIsBlocked(user)) {
             return "redirect:/";
         }
 
-        Set<Chat> myChats = chatRepo.findChatToChatting(user.getId());
+        Set<Chat> myChats = chatService.findChatToChatting(user);
+
         model.addAttribute("myChats", myChats);
+
         return "chats";
     }
 
@@ -66,19 +60,18 @@ public class ChatsController {
             @RequestParam Long chatId,
             @AuthenticationPrincipal User user) {
 
-        if (!chatRepo.findById(chatId).isPresent()) {
+        if (!chatService.chatIsExist(chatId)) {
             return "redirect:/chats";
         }
 
-        if (chatService.userIsBlocked(user)) {
+        if (userService.userIsBlocked(user)) {
             return "redirect:/";
         }
 
-        Chat chat = chatRepo.findById(chatId).get();
-
-        Set<Chat> myChats = chatRepo.findChatToChatting(user.getId());
-        User currentUser = userRepo.findById(user.getId()).get();
-        List<ChatMessage> messages = chatMessageRepo.findByChatOrderById(chat);
+        Chat chat = chatService.findChatById(chatId);
+        Set<Chat> myChats = chatService.findChatToChatting(user);
+        User currentUser = userService.findUserById(user);
+        List<ChatMessage> messages = messageService.findMessageByChatOrderById(chat);
 
         if (!chat.getExistence() ||
                 !((currentUser == chat.getCreator()) || (currentUser == chat.getParticipant()))
@@ -86,22 +79,25 @@ public class ChatsController {
             return "redirect:/chats";
         }
 
-
         model.addAttribute("currentChatId", chat.getId());
         model.addAttribute("myChats", myChats);
         model.addAttribute("titleTopic", chat.getName());
         model.addAttribute("chatMessages", messages);
         model.addAttribute("currentUser", user);
+
         return "chats";
     }
 
     @GetMapping("/chats/delete")
     public String deleteTopic(@RequestParam Long currentChatId,
                               @AuthenticationPrincipal User user) {
-        if (chatService.userIsBlocked(user)) {
+
+        if (userService.userIsBlocked(user)) {
             return "redirect:/";
         }
+
         chatService.deactivationChat(currentChatId, user);
+
         return "redirect:/chats";
     }
 
@@ -113,11 +109,11 @@ public class ChatsController {
             @Valid ChatMessage chatMessage,
             BindingResult bindingResult) {
 
-        if (!chatRepo.findById(currentChatId).isPresent()) {
+        if (!chatService.chatIsExist(currentChatId)) {
             return "redirect:/chats";
         }
 
-        if (chatService.userIsBlocked(user)) {
+        if (userService.userIsBlocked(user)) {
             return "redirect:/";
         }
 
@@ -126,6 +122,7 @@ public class ChatsController {
         }
 
         messageService.createMessage(user, text, currentChatId);
+
         return ("redirect:/chats/selectchat?chatId=" + currentChatId);
     }
 
@@ -137,15 +134,16 @@ public class ChatsController {
             @RequestParam String exampleRadios
     ) {
 
-        if (!chatRepo.findById(currentChatId).isPresent()) {
+        if (!chatService.chatIsExist(currentChatId)) {
             return "redirect:/chats";
         }
 
-        if (chatService.userIsBlocked(user)) {
+        if (userService.userIsBlocked(user)) {
             return "redirect:/";
         }
 
         reportService.createReport(messageId, exampleRadios);
+
         return ("redirect:/chats/selectchat?chatId=" + currentChatId);
     }
 

@@ -1,9 +1,10 @@
-package com.horriblehades.toxictalks.controler;
+package com.horriblehades.toxictalks.controller;
 
 
 import com.horriblehades.toxictalks.domain.User;
 import com.horriblehades.toxictalks.service.UserService;
 import com.horriblehades.toxictalks.service.ValidationService;
+import com.horriblehades.toxictalks.utils.ErrorsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -49,7 +50,7 @@ public class RegistrationController {
 
         if (bindingResult.hasErrors()) {
 
-            Map<String, String> errors = UtilsController.getErrors(bindingResult);
+            Map<String, String> errors = ErrorsUtils.getErrors(bindingResult);
 
             model.mergeAttributes(errors);
 

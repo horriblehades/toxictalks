@@ -15,7 +15,7 @@ public class Report {
     @JoinColumn(name = "message_id")
     private ChatMessage message;
 
-    public Report () {
+    public Report() {
 
     }
 

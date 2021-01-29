@@ -9,6 +9,8 @@ import com.horriblehades.toxictalks.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MessageService {
 
@@ -40,4 +42,9 @@ public class MessageService {
             chatMessageRepo.save(message);
         }
     }
+
+    public List<ChatMessage> findMessageByChatOrderById(Chat chat) {
+        return chatMessageRepo.findByChatOrderById(chat);
+    }
+
 }

@@ -17,6 +17,9 @@ public class ReportService {
     @Autowired
     private ReportRepo reportRepo;
 
+
+    public Iterable<Report> findAllReports() { return reportRepo.findAll(); }
+
     public void createReport(Long messageId, String exampleRadios) {
         ChatMessage message = chatMessageRepo.findById(messageId).get();
         Report report = new Report();
@@ -51,4 +54,5 @@ public class ReportService {
     public void deleteReport(Long reportId) {
         reportRepo.delete(reportRepo.findById(reportId).get());
     }
+
 }
